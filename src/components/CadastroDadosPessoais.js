@@ -9,15 +9,51 @@ const RegistrationForm = () => {
     genero: ''
   });
 
+  const [error, setError] = useState({
+    dataNasc: '',
+    telefone: ''
+  });
+
   const handleChange = (e) => {
+    const { name, value } = e.target;
+    setError({ ...error, [name]: '' });
+
+    if (name === 'dataNasc') {
+      const hoje = new Date();
+      const dataSelecionada = new Date(value);
+      
+      if (dataSelecionada > hoje) {
+        setError({ ...error, dataNasc: "A data de nascimento não deve ser maior do que a data atual" });
+        return;
+      }
+    }
+
+    if (name === 'telefone') {
+      let telFormat = value.replace(/\D/g, "");
+      telFormat = telFormat.replace(/^(\d{2})(\d)/, "($1) $2");
+      telFormat = telFormat.replace(/(\d{5})(\d)/, "$1-$2");
+      telFormat = telFormat.slice(0, 15);
+
+      setFormData({
+        ...formData,
+        [name]: telFormat
+      });
+      return;
+    }
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (formData.telefone.length !== 15) {
+      setError({ ...error, telefone: "O telefone deve estar preenchido corretamente." });
+      return;
+    }
+
     console.log('Formulário enviado:', formData);
   };
 
@@ -38,10 +74,12 @@ const RegistrationForm = () => {
             <div className="campos">
                 <label htmlFor="dataNasc" className="label">Data de Nascimento</label>
                 <input type="date" id="dataNasc" name="dataNasc" value={formData.dataNasc} onChange={handleChange} required/>
+                {error.dataNasc && <span className="error">{error.dataNasc}</span>}
             </div>
             <div className="campos">
                 <label htmlFor="telefone" className="label">Número de Telefone</label>
-                <input type="tel" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} required/>
+                <input type="tel" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} required placeholder="(99) 99999-9999"/>
+                {error.telefone && <span className="error">{error.telefone}</span>}
             </div>
 
             <div className="campos">

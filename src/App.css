@@ -5,6 +5,7 @@
   --azul-claro: #369CFB;
   --azul-escuro: #00284d;
   --background-header: #fcfcfc;
+  --vermelho: #ff0000;
 }
 
 .navbar {
@@ -107,6 +108,13 @@
         &:hover {
           color: var(--azul-escuro);
         }
+      }
+
+      span {
+        color: var(--vermelho);
+        font-size: 13px;
+        float: left;
+        font-weight: 500;
       }
     }
 

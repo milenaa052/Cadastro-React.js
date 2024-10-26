@@ -1,0 +1,202 @@
+:root {
+  --branco: #FFF;
+  --cinza-escuro: #777875;
+  --cinza-claro: #B7B7B7;
+  --azul-claro: #369CFB;
+  --azul-escuro: #00284d;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--branco);
+  padding: 10px;
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  
+    .logo {
+      margin: 0;
+    }
+  }
+}
+
+.menu-icons {
+  display: flex;
+  align-items: center;
+
+  .perfil i {
+    color: var(--cinza-escuro);
+    font-size: 35px;
+  
+    &:hover {
+      color: var(--azul-claro);
+    }
+  }
+}
+
+.barras {
+  display: none;
+}
+
+.navbar-itens {
+  display: flex;
+
+  .navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-right: 15px;
+  
+    .nav-item {
+      margin-left: 15px;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+
+  .cardForm {
+    border: 5px solid var(--branco);
+    margin: 5%;
+    width: 40%;
+    background-color: var(--branco);
+    border-radius: 10px;
+    padding: 15px;
+
+    .campos {
+      margin: 30px;
+
+      .label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      input {
+        border: 2px solid var(--cinza-claro);
+        border-radius: 5px;
+        height: 25px;
+        width: 97%;
+        padding: 5px;
+      }
+
+      select {
+        border: 2px solid var(--cinza-claro);
+        border-radius: 5px;
+        height: 42px;
+        width: 100%;
+        padding: 5px;
+      }
+    }
+
+    .check {
+      margin: 30px;
+      display: flex;
+
+      .label {
+        font-weight: bold;
+        margin: 5px;
+        color: var(--azul-claro);
+        cursor: pointer;
+
+        &:hover {
+          color: var(--azul-escuro);
+        }
+      }
+    }
+
+    .recuperarSenha {
+      text-align: left;
+      display: flex;
+      margin: 15px 0px;
+      color: var(--azul-claro);
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        color: var(--azul-escuro);
+      }
+    }
+
+    .submit {
+      margin: 50px 30px 0px;
+      display: flex;
+      justify-content: space-between;
+
+      .login {
+        color: var(--azul-claro);
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--azul-escuro);
+        }
+      }
+
+      button {
+        background-color: var(--azul-claro);
+        color: var(--branco);
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--azul-escuro);
+        }
+      }
+    }
+  }
+}
+
+
+@media (max-width: 768px) {
+  .menu {
+    justify-content: space-between;
+
+    .logo {
+      margin: 0;
+      text-align: center;
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      order: 2;
+    }
+
+    .perfil {
+      order: 1;
+    }
+
+    .barras {
+      display: block;
+      order: 3;
+    }
+  
+    .navbar-itens {
+      display: none;
+    }
+  }
+
+  .card {
+
+    .cardForm {
+      width: 80%;
+    }
+  }
+  
+}
+
+
+.App {
+  text-align: center;
+}

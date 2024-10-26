@@ -4,20 +4,21 @@
   --cinza-claro: #B7B7B7;
   --azul-claro: #369CFB;
   --azul-escuro: #00284d;
+  --background-header: #fcfcfc;
 }
 
 .navbar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--branco);
-  padding: 10px;
+  background-color: var(--background-header);
 
   .menu {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
+    padding: 10px;
   
     .logo {
       margin: 0;
@@ -163,13 +164,11 @@
 @media (max-width: 768px) {
   .menu {
     justify-content: space-between;
+    position: relative;
 
     .logo {
       margin: 0;
-      text-align: center;
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
+      text-align: center; 
       order: 2;
     }
 
@@ -180,10 +179,28 @@
     .barras {
       display: block;
       order: 3;
+      background-color: transparent;
+      border: none;
+      font-size: 20px;
     }
-  
+    
     .navbar-itens {
       display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--background-header);
+      padding: 10px 0;
+  
+      .navbar-nav {
+        display: block;
+      }
+    }
+
+    .mostrar {
+      display: flex;
     }
   }
 

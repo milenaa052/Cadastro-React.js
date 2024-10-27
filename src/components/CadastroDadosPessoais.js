@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RegistrationForm = () => {
+const CadastroDadosPessoais = ({ onNext }) => {
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -10,8 +10,11 @@ const RegistrationForm = () => {
   });
 
   const [error, setError] = useState({
+    nome: '',
+    email: '',
     dataNasc: '',
-    telefone: ''
+    telefone: '',
+    genero: ''
   });
 
   const handleChange = (e) => {
@@ -23,7 +26,7 @@ const RegistrationForm = () => {
       const dataSelecionada = new Date(value);
       
       if (dataSelecionada > hoje) {
-        setError({ ...error, dataNasc: "A data de nascimento não deve ser maior do que a data atual" });
+        setError({ ...error, dataNasc: "A data de nascimento não deve ser maior do que a data atual." });
         return;
       }
     }
@@ -49,12 +52,31 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(formData.nome === '') {
+      setError({ ...error, nome: "Preencha o seu nome por favor." });
+      return;
+    } else if(formData.email === '') {
+      setError({ ...error, email: "Preencha o seu email por favor." });
+      return;
+    } else if(formData.dataNasc === '') {
+      setError({ ...error, dataNasc: "Preencha a sua data de nascimento por favor." });
+      return;
+    } else if(formData.telefone === '') {
+      setError({ ...error, telefone: "Preencha o seu telefone por favor." });
+      return;
+    } else if(formData.genero === '') {
+      setError({ ...error, genero: "Preencha o seu gênero por favor." });
+      return;
+    }
+
     if (formData.telefone.length !== 15) {
       setError({ ...error, telefone: "O telefone deve estar preenchido corretamente." });
       return;
     }
 
     console.log('Formulário enviado:', formData);
+    onNext();
   };
 
   return (
@@ -65,37 +87,40 @@ const RegistrationForm = () => {
             <form onSubmit={handleSubmit} className="form">
             <div className="campos">
                 <label htmlFor="nome" className="label">Nome</label>
-                <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange} required/>
+                <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange}/>
+                {error.nome && <span className="error">{error.nome}</span>}
             </div>
             <div className="campos">
                 <label htmlFor="email" className="label">Email</label>
-                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required/>
+                <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}/>
+                {error.email && <span className="error">{error.email}</span>}
             </div>
             <div className="campos">
                 <label htmlFor="dataNasc" className="label">Data de Nascimento</label>
-                <input type="date" id="dataNasc" name="dataNasc" value={formData.dataNasc} onChange={handleChange} required/>
+                <input type="date" id="dataNasc" name="dataNasc" value={formData.dataNasc} onChange={handleChange}/>
                 {error.dataNasc && <span className="error">{error.dataNasc}</span>}
             </div>
             <div className="campos">
                 <label htmlFor="telefone" className="label">Número de Telefone</label>
-                <input type="tel" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} required placeholder="(99) 99999-9999"/>
+                <input type="tel" id="telefone" name="telefone" value={formData.telefone} onChange={handleChange} placeholder="(99) 99999-9999"/>
                 {error.telefone && <span className="error">{error.telefone}</span>}
             </div>
 
             <div className="campos">
                 <label htmlFor="genero" className="label">Gênero</label>
-                <select id="genero" name="genero" value={formData.genero} onChange={handleChange} required> 
-                <option value="">Selecione...</option>
-                <option value="masculino">Masculino</option>
-                <option value="feminino">Feminino</option>
-                <option value="outro">Outro</option>
-                <option value="prefiro-nao-dizer">Prefiro não dizer</option>
+                <select id="genero" name="genero" value={formData.genero} onChange={handleChange}> 
+                  <option value="">Selecione...</option>
+                  <option value="masculino">Masculino</option>
+                  <option value="feminino">Feminino</option>
+                  <option value="outro">Outro</option>
+                  <option value="prefiro-nao-dizer">Prefiro não dizer</option>
                 </select>
+                {error.genero && <span className="error">{error.genero}</span>}
             </div>
 
             <div className='submit'>
               <a href="www.google.com" className="login">Fazer login</a>
-              <button type="submit">Próximo</button>
+              <button type="button" onClick={handleSubmit}>Próximo</button>
             </div>
             </form>
       </div>
@@ -103,4 +128,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default CadastroDadosPessoais;

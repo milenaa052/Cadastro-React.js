@@ -44,7 +44,7 @@ const RegistrationForm = () => {
 
     else if (!validarSenha(formData.senha)) {
       setError(
-        'A senha deve ter letra maiúscula, minúscula, número e símbolo.'
+        'A senha deve ter no mínimo 8 caracteres, letra maiúscula, minúscula, número e símbolo.'
       );
     } else {
       setError('');

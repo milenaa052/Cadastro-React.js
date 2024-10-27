@@ -11,10 +11,8 @@ const CadastroDadosPessoais = ({ onNext }) => {
 
   const [error, setError] = useState({
     nome: '',
-    email: '',
     dataNasc: '',
     telefone: '',
-    genero: ''
   });
 
   const handleChange = (e) => {
@@ -53,20 +51,8 @@ const CadastroDadosPessoais = ({ onNext }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(formData.nome === '') {
-      setError({ ...error, nome: "Preencha o seu nome por favor." });
-      return;
-    } else if(formData.email === '') {
-      setError({ ...error, email: "Preencha o seu email por favor." });
-      return;
-    } else if(formData.dataNasc === '') {
-      setError({ ...error, dataNasc: "Preencha a sua data de nascimento por favor." });
-      return;
-    } else if(formData.telefone === '') {
-      setError({ ...error, telefone: "Preencha o seu telefone por favor." });
-      return;
-    } else if(formData.genero === '') {
-      setError({ ...error, genero: "Preencha o seu gênero por favor." });
+    if (!formData.nome || !formData.email || !formData.dataNasc || !formData.telefone || !formData.genero) {
+      setError({ ...error, nome: "Preencha todos os campos." });
       return;
     }
 
@@ -88,17 +74,14 @@ const CadastroDadosPessoais = ({ onNext }) => {
             <div className="campos">
                 <label htmlFor="nome" className="label">Nome</label>
                 <input type="text" id="nome" name="nome" value={formData.nome} onChange={handleChange}/>
-                {error.nome && <span className="error">{error.nome}</span>}
             </div>
             <div className="campos">
                 <label htmlFor="email" className="label">Email</label>
                 <input type="email" id="email" name="email" value={formData.email} onChange={handleChange}/>
-                {error.email && <span className="error">{error.email}</span>}
             </div>
             <div className="campos">
                 <label htmlFor="dataNasc" className="label">Data de Nascimento</label>
                 <input type="date" id="dataNasc" name="dataNasc" value={formData.dataNasc} onChange={handleChange}/>
-                {error.dataNasc && <span className="error">{error.dataNasc}</span>}
             </div>
             <div className="campos">
                 <label htmlFor="telefone" className="label">Número de Telefone</label>
@@ -115,7 +98,7 @@ const CadastroDadosPessoais = ({ onNext }) => {
                   <option value="outro">Outro</option>
                   <option value="prefiro-nao-dizer">Prefiro não dizer</option>
                 </select>
-                {error.genero && <span className="error">{error.genero}</span>}
+                {error.nome && <span className="error">{error.nome}</span>}
             </div>
 
             <div className='submit'>

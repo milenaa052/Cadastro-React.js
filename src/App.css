@@ -13,6 +13,7 @@
   align-items: center;
   justify-content: space-between;
   background-color: var(--background-header);
+  height: 65px;
 
   .menu {
     display: flex;
@@ -66,14 +67,14 @@
 
   .cardForm {
     border: 5px solid var(--branco);
-    margin: 5%;
+    margin: 3%;
     width: 40%;
     background-color: var(--branco);
     border-radius: 10px;
-    padding: 15px;
+    padding: 10px;
 
     .campos {
-      margin: 30px;
+      margin: 25px 30px;
 
       .label {
         display: block;
@@ -85,7 +86,7 @@
       input {
         border: 2px solid var(--cinza-claro);
         border-radius: 5px;
-        height: 25px;
+        height: 20px;
         width: 97%;
         padding: 5px;
       }
@@ -93,7 +94,7 @@
       select {
         border: 2px solid var(--cinza-claro);
         border-radius: 5px;
-        height: 42px;
+        height: 35px;
         width: 100%;
         padding: 5px;
       }

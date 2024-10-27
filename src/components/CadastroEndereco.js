@@ -102,7 +102,6 @@ const CadastroEndereco = ({ onNext }) => {
           <div className="campos">
               <label htmlFor="numero" className="label">Número</label>
               <input type="text" id="numero" name="numero" value={formData.numero} onChange={handleChange} required/>
-              <input type="text" id="numero" name="numero" value={formData.numero} onChange={handleChange}/>
               {error.numero && <span className="error">{error.numero}</span>}
           </div>
 

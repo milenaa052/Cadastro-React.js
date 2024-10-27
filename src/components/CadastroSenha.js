@@ -87,7 +87,7 @@ const CadastroSenha = ({ onSave }) => {
           <div className="check">
             <input type="checkbox" id="termos" name="termos" value={formData.termos} onChange={handleChange} required/>
             <label htmlFor="termos" className="label">
-              Aceite os <span className="termos-link" onClick={openModal}>Termos de Serviços</span>
+              <span className="termos-link" onClick={openModal}>Aceite os Termos de Serviços</span>
             </label>
           </div>
 

@@ -9,11 +9,17 @@ const RegistrationForm = () => {
     numero: ''
   });
 
+  const [error, setError] = useState({
+    cep: '',
+    numero: ''
+  });
+
   const handleChange = (e) => {
     const { name, value } = e.target;
+    setError({ ...error, [name]: '' });
 
     if (name === "numero" && value < 0) {
-      alert("O número não deve ser negativo");
+      setError({ ...error, numero: "O número não deve ser negativo." });
       return;
     }
 
@@ -25,7 +31,7 @@ const RegistrationForm = () => {
 
   const buscarCep = async () => {
     if (formData.cep.length !== 8) {
-      alert("O CEP deve ter 8 dígitos");
+      setError({ ...error, cep: "O CEP deve ter 8 dígitos." });
       return;
     }
     
@@ -35,7 +41,7 @@ const RegistrationForm = () => {
       const data = await response.json();
 
       if (data.erro) {
-        alert("CEP não encontrado!");
+        setError({ ...error, cep: "CEP não encontrado!" });
         return;
       }
 
@@ -46,8 +52,7 @@ const RegistrationForm = () => {
         estado: data.uf || ''
       });
     } catch (error) {
-      console.error("Erro ao buscar o CEP:", error);
-      alert("Erro ao buscar o CEP. Tente novamente.");
+      setError({ ...error, cep: "Erro ao buscar o CEP." });
     }
   };
 
@@ -55,6 +60,17 @@ const RegistrationForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    if(formData.cep === '') {
+      setError({ ...error, cep: "Preencha o seu CEP por favor." });
+      return;
+    } else if(formData.numero === '') {
+      setError({ ...error, numero: "Preencha o número da sua casa/apartamento por favor." });
+      return;
+    }
+
+   
+
     console.log('Formulário enviado:', formData);
   };
 
@@ -66,24 +82,26 @@ const RegistrationForm = () => {
         <form onSubmit={handleSubmit} className="form">
           <div className="campos">
               <label htmlFor="cep" className="label">CEP</label>
-              <input type="text" id="cep" name="cep" value={formData.cep} onChange={handleChange} onBlur={buscarCep} required/>
+              <input type="text" id="cep" name="cep" value={formData.cep} onChange={handleChange} onBlur={buscarCep}/>
               <a href="https://buscacepinter.correios.com.br/app/endereco/index.php" target="blank" class="buscaCep">Não sei meu cep</a>
+              {error.cep && <span className="error" style={{float: 'right'}}>{error.cep}</span>}
           </div>
           <div className="campos">
               <label htmlFor="estado" className="label">Estado</label>
-              <input type="text" id="estado" name="estado" value={formData.estado} onChange={handleChange} required disabled/>
+              <input type="text" id="estado" name="estado" value={formData.estado} onChange={handleChange} disabled/>
           </div>
           <div className="campos">
               <label htmlFor="cidade" className="label">Cidade</label>
-              <input type="text" id="cidade" name="cidade" value={formData.cidade} onChange={handleChange} required disabled/>
+              <input type="text" id="cidade" name="cidade" value={formData.cidade} onChange={handleChange} disabled/>
           </div>
           <div className="campos">
               <label htmlFor="rua" className="label">Rua</label>
-              <input type="text" id="rua" name="rua" value={formData.rua} onChange={handleChange} required disabled/>
+              <input type="text" id="rua" name="rua" value={formData.rua} onChange={handleChange} disabled/>
           </div>
           <div className="campos">
               <label htmlFor="numero" className="label">Número</label>
-              <input type="text" id="numero" name="numero" value={formData.numero} onChange={handleChange} required/>
+              <input type="text" id="numero" name="numero" value={formData.numero} onChange={handleChange}/>
+              {error.numero && <span className="error">{error.numero}</span>}
           </div>
 
           <div className='submit'>

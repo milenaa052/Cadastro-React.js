@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RegistrationForm = () => {
+const CadastroDadosPessoais = ({ onNext }) => {
   const [formData, setFormData] = useState({
     nome: '',
     email: '',
@@ -76,6 +76,7 @@ const RegistrationForm = () => {
     }
 
     console.log('Formulário enviado:', formData);
+    onNext();
   };
 
   return (
@@ -119,7 +120,7 @@ const RegistrationForm = () => {
 
             <div className='submit'>
               <a href="www.google.com" className="login">Fazer login</a>
-              <button type="submit">Próximo</button>
+              <button type="button" onClick={handleSubmit}>Próximo</button>
             </div>
             </form>
       </div>
@@ -127,4 +128,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default CadastroDadosPessoais;

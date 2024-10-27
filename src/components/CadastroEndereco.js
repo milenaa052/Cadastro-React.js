@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RegistrationForm = () => {
+const CadastroEndereco = ({ onNext }) => {
   const [formData, setFormData] = useState({
     cep: '',
     estado: '',
@@ -72,6 +72,7 @@ const RegistrationForm = () => {
    
 
     console.log('Formulário enviado:', formData);
+    onNext();
   };
 
   return (
@@ -100,13 +101,14 @@ const RegistrationForm = () => {
           </div>
           <div className="campos">
               <label htmlFor="numero" className="label">Número</label>
+              <input type="text" id="numero" name="numero" value={formData.numero} onChange={handleChange} required/>
               <input type="text" id="numero" name="numero" value={formData.numero} onChange={handleChange}/>
               {error.numero && <span className="error">{error.numero}</span>}
           </div>
 
           <div className='submit'>
             <a href="www.google.com" className="login">Fazer login</a>
-            <button type="submit">Próximo</button>
+            <button type="button" onClick={handleSubmit}>Próximo</button>
           </div>
         </form>
       </div>
@@ -114,4 +116,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default CadastroEndereco;

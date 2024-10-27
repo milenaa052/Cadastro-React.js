@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const RegistrationForm = () => {
+const CadastroSenha = ({ onSave }) => {
   const [formData, setFormData] = useState({
     senha: '',
     confirme: '',
@@ -49,6 +49,7 @@ const RegistrationForm = () => {
     } else {
       setError('');
       console.log('Formulário enviado:', formData);
+      onSave();
     }
   };
 
@@ -92,7 +93,7 @@ const RegistrationForm = () => {
 
           <div className='submit'>
             <a href="www.google.com" className="login">Fazer login</a>
-            <button type="submit">Salvar</button>
+            <button type="button" onClick={handleSubmit}>Salvar</button>
           </div>
         </form>
       </div>
@@ -109,4 +110,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default CadastroSenha;

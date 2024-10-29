@@ -54,7 +54,6 @@ const CadastroSenha = ({ onSave }) => {
       );
     } else {
       setError('');
-      console.log('Formulário enviado:', formData);
       onSave(formData);
     }
   };
@@ -90,7 +89,7 @@ const CadastroSenha = ({ onSave }) => {
           </div>
 
           <div className='submit'>
-            <a href="www.google.com" className="login">Fazer login</a>
+            <a href="/login" className="login">Fazer login</a>
             <button type="button" onClick={handleSubmit}>Salvar</button>
           </div>
         </form>

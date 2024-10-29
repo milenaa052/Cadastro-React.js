@@ -9,33 +9,33 @@ function Header() {
 
   return (
     <header>
-      <nav class="navbar">
-        <div class="menu">
-          <h2 class="logo">LOGO</h2>
+      <nav className="navbar">
+        <div className="menu">
+          <h2 className="logo">LOGO</h2>
 
-          <div class="menu-icons">
+          <div className="menu-icons">
             <div className={`navbar-itens ${menuAberto ? 'mostrar' : ''}`}>
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <p class="item">Item-1</p>
+              <ul className="navbar-nav">
+                <li className="nav-item">
+                  <p className="item">Item-1</p>
                 </li>
-                <li class="nav-item">
-                  <p class="item">Item-2</p>
+                <li className="nav-item">
+                  <p className="item">Item-2</p>
                 </li>
-                <li class="nav-item">
-                  <p class="item">Item-3</p>
+                <li className="nav-item">
+                  <p className="item">Item-3</p>
                 </li>
               </ul>
             </div>
 
-            <div class="perfil">
+            <div className="perfil">
               <a href="/home">
-                <i class="fa-solid fa-circle-user"></i>
+                <i className="fa-solid fa-circle-user"></i>
               </a>
             </div>
           </div>
 
-          <button class="barras" type="button" onClick={toggleMenu}>
+          <button className="barras" type="button" onClick={toggleMenu}>
             <i id="botao" className={`fa-solid ${menuAberto ? 'fa-xmark' : 'fa-bars'}`}></i>
           </button>
         </div>

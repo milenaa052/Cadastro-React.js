@@ -46,7 +46,7 @@ const CadastroEndereco = ({ onNext }) => {
       }
 
       setFormData({
-        
+        ...formData,
         rua: data.logradouro || '',
         cidade: data.localidade || '',
         estado: data.uf || ''
@@ -55,8 +55,6 @@ const CadastroEndereco = ({ onNext }) => {
       setError({ ...error, cep: "Erro ao buscar o CEP." });
     }
   };
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,10 +67,8 @@ const CadastroEndereco = ({ onNext }) => {
       return;
     }
 
-   
-
     console.log('Formulário enviado:', formData);
-    onNext();
+    onNext(formData);
   };
 
   return (

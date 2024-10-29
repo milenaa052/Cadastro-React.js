@@ -62,7 +62,7 @@ const CadastroDadosPessoais = ({ onNext }) => {
     }
 
     console.log('Formulário enviado:', formData);
-    onNext();
+    onNext(formData);
   };
 
   return (

@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 
 const CadastroSenha = ({ onSave }) => {
   const [formData, setFormData] = useState({
-    senha: ''
+    senha: '',
+    confirme: '',
+    termos: false
   });
 
   const [showPassword, setShowPassword] = useState({
@@ -14,31 +16,26 @@ const CadastroSenha = ({ onSave }) => {
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value, type, checked } = e.target;
+
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value
+    }));
+
+    if (name === 'senha' || name === 'confirme') setError('');
   };
 
   const exibirSenha = (field) => {
-    setShowPassword({
-      ...showPassword,
-      [field]: !showPassword[field],
-    });
+    setShowPassword((prevShowPassword) => ({
+      ...prevShowPassword,
+      [field]: !prevShowPassword[field]
+    }));
   };
 
   const validarSenha = (senha) => {
-    const regex =
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
     return regex.test(senha);
-  };
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
   };
 
   const handleSubmit = (e) => {
@@ -48,14 +45,12 @@ const CadastroSenha = ({ onSave }) => {
       setError('As senhas não coincidem.');
     } 
 
-    else if (!validarSenha(formData.senha)) {
-      setError(
-        'A senha deve ter no mínimo 8 caracteres, letra maiúscula, minúscula, número e símbolo.'
-      );
-    } else {
-      setError('');
-      onSave(formData);
+    if (!validarSenha(formData.senha)) {
+      setError('A senha deve ter no mínimo 8 caracteres, letra maiúscula, minúscula, número e símbolo.');
+      return;
     }
+
+    onSave(formData);
   };
 
   return (
@@ -84,13 +79,13 @@ const CadastroSenha = ({ onSave }) => {
           <div className="check">
             <input type="checkbox" id="termos" name="termos" value={formData.termos} onChange={handleChange} required/>
             <label htmlFor="termos" className="label">
-              <span className="termos-link" onClick={openModal}>Aceite os Termos de Serviços</span>
+              <span className="termos-link" onClick={() => setShowModal(true)}>Aceite os Termos de Serviços</span>
             </label>
           </div>
 
           <div className='submit'>
             <a href="/login" className="login">Fazer login</a>
-            <button type="button" onClick={handleSubmit}>Salvar</button>
+            <button type="submit" onClick={handleSubmit}>Salvar</button>
           </div>
         </form>
       </div>
@@ -98,7 +93,7 @@ const CadastroSenha = ({ onSave }) => {
       {showModal && (
         <div className="modal">
           <div className="modal-content">
-            <span className="close" onClick={closeModal}>&times;</span>
+            <span className="close" onClick={() => setShowModal(false)}>&times;</span>
             <p>Termos de Serviços</p>
           </div>
         </div>

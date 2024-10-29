@@ -2,11 +2,16 @@ import React, { useState } from 'react';
 
 const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({ email: '', senha: '' });
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const exibirSenha = () => {
+    setShowPassword((prevShowPassword) => !prevShowPassword);
   };
 
   const handleSubmit = async (e) => {
@@ -38,13 +43,16 @@ const Login = ({ onLogin }) => {
 
         <form onSubmit={handleSubmit} className="form">
           <div className="campos">
-              <label htmlFor="email" className="label">Email</label>
-              <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required/>
+            <label htmlFor="email" className="label">Email</label>
+            <input type="email" id="email" name="email" value={formData.email} onChange={handleChange} required/>
           </div>
 
           <div className="campos">
               <label htmlFor="senha" className="label">Senha</label>
-              <input type="password" id="senha" name="senha" value={formData.senha} onChange={handleChange} required/>
+              <div className="input-container">
+                <input type={showPassword ? 'text' : 'password'} id="senha" name="senha" value={formData.senha} onChange={handleChange} required/>
+                <i className={`fa-solid ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`} onClick={exibirSenha}/>
+              </div>
               <a href="www.google.com" className="recuperarSenha">Esqueci minha senha</a>
           </div>
 

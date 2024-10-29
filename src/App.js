@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
-import Pessoais from './components/cadastroDadosPessoais';
+import Pessoais from './components/CadastroDadosPessoais';
 import Endereco from './components/CadastroEndereco';
 import Senha from './components/CadastroSenha';
 import Login from './components/Login';

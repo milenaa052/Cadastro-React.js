@@ -8,6 +8,10 @@
   --vermelho: #ff0000;
 }
 
+.App {
+  text-align: center;
+}
+
 .navbar {
   display: flex;
   align-items: center;
@@ -25,19 +29,19 @@
     .logo {
       margin: 0;
     }
-  }
-}
 
-.menu-icons {
-  display: flex;
-  align-items: center;
-
-  .perfil i {
-    color: var(--cinza-escuro);
-    font-size: 35px;
-  
-    &:hover {
-      color: var(--azul-claro);
+    .menu-icons {
+      display: flex;
+      align-items: center;
+    
+      .perfil i {
+        color: var(--cinza-escuro);
+        font-size: 35px;
+      
+        &:hover {
+          color: var(--azul-claro);
+        }
+      }
     }
   }
 }
@@ -213,25 +217,25 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-  }
-  
-  .modal-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-  }
-  
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 50px;
-    cursor: pointer;
 
-    &:hover {
-      color: var(--azul-escuro);
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 50px;
+        cursor: pointer;
+    
+        &:hover {
+          color: var(--azul-escuro);
+        }
+      }
     }
   }
 }
@@ -301,9 +305,4 @@
     }
   }
   
-}
-
-
-.App {
-  text-align: center;
 }

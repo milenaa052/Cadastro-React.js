@@ -61,8 +61,7 @@ const CadastroDadosPessoais = ({ onNext }) => {
       return;
     }
 
-    console.log('Formulário enviado:', formData);
-    onNext();
+    onNext(formData);
   };
 
   return (
@@ -102,7 +101,7 @@ const CadastroDadosPessoais = ({ onNext }) => {
             </div>
 
             <div className='submit'>
-              <a href="www.google.com" className="login">Fazer login</a>
+              <a href="/login" className="login">Fazer login</a>
               <button type="button" onClick={handleSubmit}>Próximo</button>
             </div>
             </form>

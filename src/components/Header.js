@@ -29,7 +29,7 @@ function Header() {
             </div>
 
             <div class="perfil">
-              <a href="https://www.google.com">
+              <a href="/home">
                 <i class="fa-solid fa-circle-user"></i>
               </a>
             </div>

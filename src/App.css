@@ -73,6 +73,15 @@
     border-radius: 10px;
     padding: 10px;
 
+    .form {
+
+      .error {
+        color: var(--vermelho);
+        font-size: 13px;
+        font-weight: 600;
+      }
+    }
+
     .campos {
       margin: 25px 30px;
 
@@ -224,6 +233,20 @@
     &:hover {
       color: var(--azul-escuro);
     }
+  }
+}
+
+.sair {
+  color: var(--vermelho);
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    color: var(--cinza-escuro);
   }
 }
 

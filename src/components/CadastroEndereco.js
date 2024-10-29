@@ -46,7 +46,7 @@ const CadastroEndereco = ({ onNext }) => {
       }
 
       setFormData({
-        
+        ...formData,
         rua: data.logradouro || '',
         cidade: data.localidade || '',
         estado: data.uf || ''
@@ -55,8 +55,6 @@ const CadastroEndereco = ({ onNext }) => {
       setError({ ...error, cep: "Erro ao buscar o CEP." });
     }
   };
-
-  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -69,10 +67,7 @@ const CadastroEndereco = ({ onNext }) => {
       return;
     }
 
-   
-
-    console.log('Formulário enviado:', formData);
-    onNext();
+    onNext(formData);
   };
 
   return (
@@ -106,7 +101,7 @@ const CadastroEndereco = ({ onNext }) => {
           </div>
 
           <div className='submit'>
-            <a href="www.google.com" className="login">Fazer login</a>
+            <a href="/login" className="login">Fazer login</a>
             <button type="button" onClick={handleSubmit}>Próximo</button>
           </div>
         </form>

@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 
 const CadastroSenha = ({ onSave }) => {
   const [formData, setFormData] = useState({
-    senha: '',
-    confirme: '',
-    termos: '',
+    senha: ''
   });
 
   const [showPassword, setShowPassword] = useState({
@@ -35,6 +33,14 @@ const CadastroSenha = ({ onSave }) => {
     return regex.test(senha);
   };
 
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -48,17 +54,8 @@ const CadastroSenha = ({ onSave }) => {
       );
     } else {
       setError('');
-      console.log('Formulário enviado:', formData);
-      onSave();
+      onSave(formData);
     }
-  };
-
-  const openModal = () => {
-    setShowModal(true);
-  };
-
-  const closeModal = () => {
-    setShowModal(false);
   };
 
   return (
@@ -92,7 +89,7 @@ const CadastroSenha = ({ onSave }) => {
           </div>
 
           <div className='submit'>
-            <a href="www.google.com" className="login">Fazer login</a>
+            <a href="/login" className="login">Fazer login</a>
             <button type="button" onClick={handleSubmit}>Salvar</button>
           </div>
         </form>

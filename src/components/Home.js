@@ -11,7 +11,7 @@ const Home = ({ onLogout }) => {
 
   return (
     <div>
-      <h1>Bem-vindo à página inicial!</h1>
+      <h1>Bem-vindo a página inicial!</h1>
       <button className='sair' onClick={handleLogout}>Sair</button>
     </div>
   );

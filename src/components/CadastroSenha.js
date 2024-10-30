@@ -12,7 +12,11 @@ const CadastroSenha = ({ onSave }) => {
     confirme: false,
   });
 
-  const [error, setError] = useState('');
+  const [error, setError] = useState({
+    confirme: '',
+    termos: ''
+  });
+
   const [showModal, setShowModal] = useState(false);
 
   const handleChange = (e) => {
@@ -42,12 +46,18 @@ const CadastroSenha = ({ onSave }) => {
     e.preventDefault();
 
     if (formData.senha !== formData.confirme) {
-      setError('As senhas não coincidem.');
+      setError((prevError) => ({ ...prevError, confirme: "As senhas não coincidem." }));
+      return;
     } 
 
     if (!validarSenha(formData.senha)) {
-      setError('A senha deve ter no mínimo 8 caracteres, letra maiúscula, minúscula, número e símbolo.');
+      setError((prevError) => ({ ...prevError, confirme: "A senha deve ter no mínimo 8 caracteres, letra maiúscula, minúscula, número e símbolo." }));
       return;
+    }
+
+    if (!formData.termos) {
+      setError((prevError) => ({ ...prevError, termos: "Você deve aceitar os termos de serviço." }));
+      return; 
     }
 
     onSave(formData);
@@ -72,7 +82,7 @@ const CadastroSenha = ({ onSave }) => {
             <div className="input-container">
               <input type={showPassword.confirme ? 'text' : 'password'} id="confirme" name="confirme" value={formData.confirme} onChange={handleChange} min={8} required/>
               <i className={`fa-solid ${showPassword.confirme ? 'fa-eye-slash' : 'fa-eye'}`} onClick={() => exibirSenha('confirme')} />
-              {error && <span className="error-message">{error}</span>}
+              {error.confirme && <span className="error">{error.confirme}</span>}
             </div>
           </div>
 
@@ -82,6 +92,7 @@ const CadastroSenha = ({ onSave }) => {
               <span className="termos-link" onClick={() => setShowModal(true)}>Aceite os Termos de Serviços</span>
             </label>
           </div>
+          {error.termos && <span className="error">{error.termos}</span>}
 
           <div className='submit'>
             <a href="/login" className="login">Fazer login</a>

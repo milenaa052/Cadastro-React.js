@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const CadastroEndereco = ({ onNext }) => {
+const CadastroEndereco = ({ onNext, onBack }) => {
   const [formData, setFormData] = useState({
     cep: '',
     estado: '',
@@ -8,6 +8,13 @@ const CadastroEndereco = ({ onNext }) => {
     rua: '',
     numero: ''
   });
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('cadastroEndereco'));
+    if (savedData) {
+      setFormData(savedData);
+    }
+  }, []);
 
   const [error, setError] = useState({
     cep: '',
@@ -67,12 +74,18 @@ const CadastroEndereco = ({ onNext }) => {
       return;
     }
 
+    localStorage.setItem('cadastroEndereco', JSON.stringify(formData));
+
     onNext(formData);
   };
 
   return (
     <div className="card">
       <div className="cardForm">
+        <button type="button" className="back-button" onClick={onBack}>
+          <i className="fa-solid fa-arrow-left"></i>
+        </button>
+        
         <h2>Endereço</h2>
 
         <form onSubmit={handleSubmit} className="form">

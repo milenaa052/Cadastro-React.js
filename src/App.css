@@ -77,6 +77,21 @@
     border-radius: 10px;
     padding: 10px;
 
+    .back-button {
+      height: 50px;
+      margin: 0px 0px 20px 0px;
+      background-color: transparent;
+      border: none;
+      font-size: 25px;
+      color: var(--azul-escuro);
+      cursor: pointer;
+      float: left;
+  
+      &:hover {
+        color: var(--azul-claro);
+      }
+    }
+
     .form {
 
       .error {
@@ -275,7 +290,7 @@
       order: 3;
       background-color: transparent;
       border: none;
-      font-size: 20px;
+      font-size: 25px;
     }
     
     .navbar-itens {

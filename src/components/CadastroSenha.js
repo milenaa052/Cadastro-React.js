@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const CadastroSenha = ({ onSave }) => {
+const CadastroSenha = ({ onSave, onBack }) => {
   const [formData, setFormData] = useState({
     senha: '',
     confirme: '',
@@ -60,12 +60,19 @@ const CadastroSenha = ({ onSave }) => {
       return; 
     }
 
+    localStorage.removeItem('cadastroDadosPessoais');
+    localStorage.removeItem('cadastroEndereco');
+
     onSave(formData);
   };
 
   return (
     <div className="card">
       <div className="cardForm">
+        <button type="button" className="back-button" onClick={onBack}>
+          <i className="fa-solid fa-arrow-left"></i>
+        </button>
+
         <h2>Cadastrar</h2>
 
         <form onSubmit={handleSubmit} className="form">

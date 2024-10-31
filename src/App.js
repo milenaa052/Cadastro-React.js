@@ -33,6 +33,10 @@ function App() {
     setTelaAtual((prox) => prox + 1);
   };
 
+  const voltar = () => {
+    setTelaAtual((back) => back - 1);
+  };
+
   const salvarDados = async (dados) => {
     const dadosFinais = { ...dadosCompletos, ...dados };
     try {
@@ -59,8 +63,8 @@ function App() {
             path="/" element={ isAuthenticated ? <Navigate to="/home" replace /> : (
                 <div>
                   {telaAtual === 1 && <Pessoais onNext={proximo} />}
-                  {telaAtual === 2 && <Endereco onNext={proximo} />}
-                  {telaAtual === 3 && <Senha onSave={salvarDados} />}
+                  {telaAtual === 2 && <Endereco onNext={proximo} onBack={voltar} />}
+                  {telaAtual === 3 && <Senha onSave={salvarDados} onBack={voltar} />}
                   {telaAtual === 4 && <Login onLogin={handleLogin} />}
                 </div>
               )

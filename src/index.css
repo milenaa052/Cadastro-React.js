@@ -1,0 +1,15 @@
+:root {
+  --background: #eceef0;
+}
+
+body {
+  margin: 0;
+  font-family: "Montserrat";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+}
+
+code {
+  font-family: 'Montsserat';
+}

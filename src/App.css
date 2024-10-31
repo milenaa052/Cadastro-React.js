@@ -1,0 +1,361 @@
+:root {
+  --branco: #FFF;
+  --cinza-escuro: #777875;
+  --cinza-claro: #B7B7B7;
+  --azul-claro: #369CFB;
+  --azul-escuro: #00284d;
+  --background-header: #fcfcfc;
+  --vermelho: #ff0000;
+}
+
+.App {
+  text-align: center;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background-header);
+  height: 65px;
+
+  .menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px;
+  
+    .logo {
+      margin: 0;
+    }
+
+    .menu-icons {
+      display: flex;
+      align-items: center;
+    
+      .perfil i {
+        color: var(--cinza-escuro);
+        font-size: 35px;
+      
+        &:hover {
+          color: var(--azul-claro);
+        }
+      }
+    }
+  }
+}
+
+.barras {
+  display: none;
+}
+
+.navbar-itens {
+  display: flex;
+
+  .navbar-nav {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin-right: 15px;
+  
+    .nav-item {
+      margin-left: 15px;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+
+  .cardForm {
+    border: 5px solid var(--branco);
+    margin: 3%;
+    width: 40%;
+    background-color: var(--branco);
+    border-radius: 10px;
+    padding: 10px;
+
+    .back-button {
+      height: 50px;
+      margin: 0px 0px 20px 0px;
+      background-color: transparent;
+      border: none;
+      font-size: 25px;
+      color: var(--azul-escuro);
+      cursor: pointer;
+      float: left;
+  
+      &:hover {
+        color: var(--azul-claro);
+      }
+    }
+
+    .form {
+
+      .error {
+        color: var(--vermelho);
+        font-size: 13px;
+        font-weight: 600;
+      }
+    }
+
+    .campos {
+      margin: 25px 30px;
+
+      .label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+        text-align: left;
+      }
+
+      input {
+        border: 2px solid var(--cinza-claro);
+        border-radius: 5px;
+        height: 20px;
+        width: 97%;
+        padding: 5px;
+      }
+
+      select {
+        border: 2px solid var(--cinza-claro);
+        border-radius: 5px;
+        height: 35px;
+        width: 100%;
+        padding: 5px;
+      }
+
+      .buscaCep {
+        color: var(--azul-claro);
+        float: left;
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 500;
+
+        &:hover {
+          color: var(--azul-escuro);
+        }
+      }
+
+      span {
+        color: var(--vermelho);
+        font-size: 12px;
+        float: left;
+        font-weight: 500;
+      }
+
+      .input-container {
+        position: relative;
+
+        i {
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          transform: translateY(-50%);
+          cursor: pointer;
+          color: var(--cinza-escuro);
+        }
+      }
+    }
+
+    .check {
+      margin: 30px;
+      display: flex;
+
+      .label {
+        font-weight: bold;
+        margin: 5px;
+        color: var(--azul-claro);
+        cursor: pointer;
+
+        &:hover {
+          color: var(--azul-escuro);
+        }
+      }
+    }
+
+    .recuperarSenha {
+      text-align: left;
+      display: flex;
+      margin: 15px 0px;
+      color: var(--azul-claro);
+      text-decoration: none;
+      font-weight: 500;
+
+      &:hover {
+        color: var(--azul-escuro);
+      }
+    }
+
+    .submit {
+      margin: 50px 30px 0px;
+      display: flex;
+      justify-content: space-between;
+
+      .login {
+        color: var(--azul-claro);
+        font-weight: 600;
+        text-decoration: none;
+
+        &:hover {
+          color: var(--azul-escuro);
+        }
+      }
+
+      button {
+        background-color: var(--azul-claro);
+        color: var(--branco);
+        padding: 10px;
+        border-radius: 5px;
+        border: none;
+        font-weight: bold;
+        font-size: 16px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--azul-escuro);
+        }
+      }
+    }
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+
+    .modal-content {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      text-align: center;
+
+      .close {
+        position: absolute;
+        top: 10px;
+        right: 15px;
+        font-size: 50px;
+        cursor: pointer;
+    
+        &:hover {
+          color: var(--azul-escuro);
+        }
+      }
+    }
+  }
+}
+
+.sair {
+  color: var(--vermelho);
+  font-size: 20px;
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: 600;
+
+  &:hover {
+    color: var(--cinza-escuro);
+  }
+}
+
+footer {
+
+  .logos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 1%;
+
+    i {
+      font-size: 1.8em;
+      color: var(--azul-escuro);
+
+      &:hover {
+        color: var(--azul-claro);
+      }
+    }
+  }
+
+  .copyright {
+    color: var(--azul-escuro);
+    text-align: center;
+    opacity: 1;
+    font-size: 13px;
+
+    a {
+      color: var(--azul-escuro);
+      font-weight: 500;
+      opacity: 1;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--azul-claro);
+      }
+    }
+  }
+}
+  
+
+@media (max-width: 768px) {
+  .menu {
+    justify-content: space-between;
+    position: relative;
+
+    .logo {
+      margin: 0;
+      text-align: center; 
+      order: 2;
+    }
+
+    .perfil {
+      order: 1;
+    }
+
+    .barras {
+      display: block;
+      order: 3;
+      background-color: transparent;
+      border: none;
+      font-size: 25px;
+    }
+    
+    .navbar-itens {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: var(--background-header);
+      padding: 10px 0;
+  
+      .navbar-nav {
+        display: block;
+      }
+    }
+
+    .mostrar {
+      display: flex;
+    }
+  }
+
+  .card {
+
+    .cardForm {
+      width: 80%;
+      margin: 15% 0%;
+    }
+  }
+  
+}

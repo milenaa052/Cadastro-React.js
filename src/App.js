@@ -7,6 +7,7 @@ import Endereco from './components/CadastroEndereco';
 import Senha from './components/CadastroSenha';
 import Login from './components/Login';
 import Home from './components/Home';
+import Footer from './components/Footer';
 
 function App() {
   const [telaAtual, setTelaAtual] = useState(1);
@@ -76,6 +77,7 @@ function App() {
 
           <Route path="*" element={<Navigate to={isAuthenticated ? "/home" : "/"} replace />} />
         </Routes>
+        <Footer />
       </div>
     </BrowserRouter>
   );

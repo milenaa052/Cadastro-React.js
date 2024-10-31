@@ -269,6 +269,43 @@
   }
 }
 
+footer {
+
+  .logos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 1%;
+
+    i {
+      font-size: 1.8em;
+      color: var(--azul-escuro);
+
+      &:hover {
+        color: var(--azul-claro);
+      }
+    }
+  }
+
+  .copyright {
+    color: var(--azul-escuro);
+    text-align: center;
+    opacity: 1;
+    font-size: 13px;
+
+    a {
+      color: var(--azul-escuro);
+      font-weight: 500;
+      opacity: 1;
+      text-decoration: none;
+
+      &:hover {
+        color: var(--azul-claro);
+      }
+    }
+  }
+}
+  
 
 @media (max-width: 768px) {
   .menu {

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const CadastroDadosPessoais = ({ onNext }) => {
   const [formData, setFormData] = useState({
@@ -8,6 +8,13 @@ const CadastroDadosPessoais = ({ onNext }) => {
     telefone: '',
     genero: ''
   });
+
+  useEffect(() => {
+    const savedData = JSON.parse(localStorage.getItem('cadastroDadosPessoais'));
+    if (savedData) {
+      setFormData(savedData);
+    }
+  }, []);
 
   const [error, setError] = useState({
     nome: '',
@@ -48,6 +55,7 @@ const CadastroDadosPessoais = ({ onNext }) => {
     e.preventDefault();
 
     if(!validateForm()) return;
+    localStorage.setItem('cadastroDadosPessoais', JSON.stringify(formData));
 
     onNext(formData);
   };
